@@ -1,0 +1,121 @@
+::-webkit-scrollbar {
+    color:blue;
+    height:5px;
+
+}
+body{
+    background-image: url(/img/pizzabackground.gif);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height:100%!important;
+}
+
+/* Modal Screens */
+#modalWindow {
+    display:block;
+    position: absolute;
+    z-index: 2;
+    background-color:whitesmoke;
+    width:80%;
+    /* height:55%; */
+    /* height:80%; */
+    left:10%;
+    top:10%;
+    border:1px solid black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding:0;
+    transition: .2s;
+    /* background-color: rgb(0,0,0); Fallback color */
+    /* background-color: rgba(0,0,0,0.4); */
+    border-radius: 10px;
+}
+#otherInput{display: none!important;}
+
+/* {display: block;} */
+
+#PickDelOrCarry{
+background-image: url(../img/pizzabg2.jpeg);
+background-repeat: no-repeat;
+background-size: 100% 60%;
+
+width:100%;
+}
+#PickpizzaSize{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    display:none;
+}
+
+/* FOR BACKGROUND IMAGES */
+.Sausage, .Pepperoni , .Ham, .Bacon, .Salami, .Peppers, .Pineapple,.Mushrooms, .Jalapenos, .Olives,.Onion {
+    border-top:4px solid grey;
+    padding:5px;
+    background-repeat: no-repeat;
+    background-position-x: 95%; 
+    height:44px;
+    background-size: 44px 44px;
+}
+
+.Pepperoni{
+    
+    background-image:url(/img/shutterstock_307086188pepperoni.png);
+ 
+}
+.Sausage{
+    background-image:url(/img/sausage.png);
+ 
+}
+
+.Ham{
+    background-image:url(/img/canadian_bacon2.png);
+
+}
+
+.Bacon{
+    background-image:url(/img/bacon2.png);
+     
+}
+
+ .Salami{
+    background-image:url(/img/salami.png);
+  
+}
+ 
+ .Peppers{
+    background-image:url(/img/bellpeppers2.png);
+
+}
+
+ .Onion{
+    background-image:url(/img/White-Onion-PNG-File.png);
+ 
+}
+ 
+ .Olives{
+    background-image:url(/img/blackolives.png);
+
+}
+ 
+ .Jalapenos {
+    background-image:url(/img/jalapenos2.png);
+}
+  .Mushrooms {
+
+    background-image:url(/img/Mushrooms2.png);
+}
+  .Pineapple{
+    background-image:url(/img/pineapple-product.png);
+}
+
+#Totally{
+    border: 1px solid black;
+    font-size: 1.5em;
+}
+.btn-primary{
+    background-color:red!important;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+      
+    
+    <input type="number" name="" id="cardnum" value="4512113014643252">
+ 
+
+    <script>
+
+    var CardNumber = window.document.getElementById("cardNumberInput").value;
+    var CardNumInput = window.document.getElementById("cardNumberInput");
+
+CardNumInput.addEventListener('keypress', function () {
+
+    //CHECK FOR THE CARD NUMBER
+    
+    if( CardNumber.charAt(0) === "4") {
+        if(CardNumber.length === 13 || CardNumber.length === 13 ) {
+
+
+        }
+        // VISA
+// <!-- 
+//         13 Digit Length
+
+//         16 Digit Length
+//          -->
+
+    $('visaLogo').src = "img/visacolor.png";
+    CheckLuhn(CardNumber);
+
+
+
+
+        
+    } else if(
+        CardNumber.charAt(0) === "5" &&  CardNumber.charAt(1) === '1' || 
+        CardNumber.charAt(0) === "5" &&  CardNumber.charAt(1) === '2' || 
+        CardNumber.charAt(0) === "5" &&  CardNumber.charAt(1) === '3' || 
+        CardNumber.charAt(0) === "5" &&  CardNumber.charAt(1) === '4' || 
+        CardNumber.charAt(0) === "5" &&  CardNumber.charAt(1) === '5'
+    ) {
+        
+        //MASTERCARD
+        // 16 Digit Length
+        $('mastercardLogo').src ="img/mastercardcolor.png";
+
+        
+    } else if ( CardNumber.charAt(0) === "3" &&  CardNumber.charAt(1) === '7') {
+        //AMERICAN EXPRESS
+        
+        // 15 digit length
+
+
+        $('amexlogo').src= "/img/amexblkwhite.png"
+    }
+});
+
+//VISA CHECK LUHN
+
+function CheckLuhn (CardNumber){ 
+
+    var number =  CardNumber.split("").reverse().join("");
+    var i;
+    var fullNumber = 0;
+
+    for(i = 0; i < number.length; i++) {
+        var luhnNum;    
+        if(i % 2){
+            luhnNum = number[i] * 2;
+
+                if(luhnNum > 9){
+                    luhnNum = String(luhnNum);
+                    intOne = parseInt(luhnNum.charAt(0), 10);
+                    intTwo = parseInt(luhnNum.charAt(1), 10);
+                    luhnNum =  intOne + intTwo;
+                    window.console.log(luhnNum);
+                    fullNumber += luhnNum;
+                } else {
+                    fullNumber += luhnNum;
+                    window.console.log(luhnNum);
+                
+                }
+        } else {
+        luhnNum = number[i];
+                fullNumber += parseInt(luhnNum,10);
+            }
+    }
+
+    window.console.log(" The Sum is " + fullNumber); 
+
+    //Check and see if it's actually divisible
+    if (fullNumber % 10 === 0){
+    //Make Input box green
+    $('cardNumberInput').style.border = '1px solid green'
+
+    window.console.log("This card is valid");
+    } else {
+        //Make input red
+    //Put in a span
+    $('cardNumberInput').border.color = 'green';
+        window.alert("This card is not valid");
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // number = parseInt(number, 10);
+
+       console.log();
+
+number.charAt(2) * 2
+number.charAt(4) * 2
+number.charAt(6) * 2
+number.charAt(8) * 2
+number.charAt(10) * 2
+number.charAt(12) * 2
+number.charAt(14) * 2
+number.charAt(16) * 2
+
+
+
+
+
+
+
+    console.log(number);
+
+    
+        
+    </script>
+</body>
+</html>

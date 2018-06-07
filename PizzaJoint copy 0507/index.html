@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pizza Joint</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/pizzacrustinfo.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+   <div class="container h-100" style="min-height: 100%;">
+       <div class="row justify-content-center align-items-center" style="margin-top: 30%;">
+        <button id="PlaceOrder" class="btn btn-primary">ORDER NOW!</button>
+       </div>
+
+    <!-- Modal -->
+<div id="modalWindow" class="d-none">
+    <section id="PickDelOrCarry" >
+                <div id="header" class="row justify-content-center">
+                    <h2 style="color:snow">
+                        Please choose your Order Type
+                    </h2>
+                </div>
+                
+                <form id="PickUpMethod" action="">
+        
+
+                    <div class="row justify-content-center align-items-center" style="margin-top: 30%;">
+                        <div class="col" align="center">
+                                <label>
+                                        <input name="DelMethod" type="radio" value="delivery" id="delradio" style="visibility: hidden;
+                                        position: absolute;"> 
+                                    <img src="img/delStart.png" alt="" class="deliveryimg" width="160px" height="160px">
+                                    <p align="center">
+                                            Delivery
+                                        </p>
+                                </label>
+                         
+                        </div>
+                        <div align="center" class="col" style="border-left:3px solid grey;">
+                            <label> 
+                                <input name="DelMethodTwo" type="radio" value="carryout" id="carryradio" style="visibility: hidden;
+                                position: absolute;"> 
+                                <img src="img/carryoutreal.png" alt="" class="carryoutimg" width="88px" height="88px"> 
+                                <p class="col">
+                                    Carryout
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                <div style="margin-top:15px; margin-bottom: 0;"class="row align-items-center justify-content-center">
+                    <!-- <input type="submit" value="Next" class="btn btn-primary btn-lg"> -->
+                </div>
+                </form>
+    </section>
+        <!-- #####################################  -->
+<section id="PickPizzaSize" class="d-none">
+            <div class="row justify-content-center">
+                <h2>
+                    SIZE DOES MATTER
+                </h2>
+            </div>
+            <div class="row justify-content-center">
+                <h4>
+                    The bigger the better
+                </h4>
+            </div>
+
+
+            <form id="PizzaSizeChoice" action="">
+
+
+                <div  class="row" style="margin-top: 50px;">
+
+                    <div align="center" class="col" >
+                        <label>
+                            <input type="radio" id="pizzasmall" name="pizzaSize" value="Small" style="visibility: hidden; /* Makes input not-clickable */
+                            position: absolute;">
+                            <img src="img/pizzasize.png" alt="" width="50" height="50">
+                        </label>
+                    </div>
+                    <div align="center" class="col" >
+                        <label>
+                            <input type="radio" name="pizzaSize" id="pizzaMedium" value="Medium" style="visibility: hidden; /* Makes input not-clickable */
+                            position: absolute;">
+                            <img src="img/pizzasize.png" alt="" width="70" height="70">
+                          
+                        </label>
+                    </div>
+                    <div align="center" class="col">
+                        <label>
+                            <input type="radio" name="pizzaSize" id='pizzaLarge' value="Large" style="visibility: hidden;
+                            position: absolute;">
+                            <img src="img/pizzasize.png" alt="" width="100" height="100">
+                          
+                        </label>
+                    </div>
+                </div>
+
+<div align="center" class="row">
+    <div class="col"> 
+        <p>
+            Small
+        </p>
+        <span>8'</span>
+</div>
+    <div align="center" class="col">
+        <p>
+            Medium
+        </p>
+        <span>12'</span>
+    </div>
+    <div align="center" class="col">
+        <p>
+            Large
+        </p>
+        <span>16'</span>
+    </div>
+</div>
+
+ <div class="row justify-content-center">
+   
+</div>
+            </form>
+</section>
+
+  <!-- #####################################  -->
+
+<section id="details" class="d-none" >
+            <div class="row justify-content-center">
+                <h2>
+                    We'd like to get to know you a little better.
+                </h2>
+            </div>
+            <div class="row justify-content-center">
+                    <em><h4>Maybe over a drink and a slice</h4></em>
+            </div>
+                <form id="DeliveryAddress">
+
+                <div class="form-group">
+                    <label for="">Name:</label>
+                        <input class="form-control is-invalid" type="text" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="">Address:</label>
+                        <input class="form-control is-invalid" type="text" placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <label for="">Address 2: Optional</label>
+                        <input class="form-control" placeholder="Address 2">
+                </div>
+                <div class="form-group">
+                        <label for="">Residence Type</label>
+                        <select class="form-control" id="housingType" required>
+                            
+                            <option selected>Select One</option>
+                            <option>House</option>
+                            <option>Apartment</option>
+                            <option>Dorm</option>
+                            <option>Campus</option>
+                            <option>Hotel</option>
+                            <option>Business</option>
+                            <option value="other">Other</option>
+                        </select>
+                </div>
+                <div class="form-group otherInput d-none"> 
+                    <label>Other
+                        <input type="text">
+                    </label>
+                </div> 
+                <div class="form-group">
+                        <label for="">City</label>
+                            <input class="form-control is-invalid" type="text" placeholder="City">
+                </div>
+
+                <div class="form-group">
+                        <label for="">State (Format CA):</label>
+                            <input class="form-control is-invalid" type="text" placeholder="State">
+                </div>
+
+                <div class="form-group">
+                        <label for="">Zip Code</label>
+                            <input class="form-control is-invalid" type="number" placeholder="Zip Code">
+                </div>
+
+                <div class="form-group">
+                        <label for="">Email Address:</label>
+                            <input class="form-control is-invalid" type="email" placeholder="Email">
+                </div>
+                    
+                <div class="row justify-content-center">
+                                <input type="submit" value="pizza! Pizza! PIZZA!" class="btn btn-primary">
+                </div>
+            </form>
+</section>
+     
+        
+        <!-- BRING THIS IN WITH XHR NOT REFRESH -->
+ <section id="pizzaDetails" class="d-none" >
+     <form action="" id="pizzaForm">
+         
+            <div class="row justify-content-center">
+                <h2> DUDE, LET'S MAKE SOME ZA!</h2> </div>
+            <div class="row justify-content-center">
+                <h3>Pizza Size Currently Selected: <span id="pizzaSizeOutput"></span> </h3>
+            </div>
+           
+            <!-- PART 2 -->
+<!-- <div  > -->
+          
+     <nav id="crust" class="top">
+            <div class="dropdownBackground">
+                <span class="arrow"></span>
+           </div>
+    
+        <ul class="cool">
+            <li><!-- Container for button -->
+               <label>
+                   <p href="#">Hand Tossed</p><!-- Title Wording -->
+                   <div class="dropdown dropdown1" id="HandTossed"><!-- Container for text info -->
+                       <input type="radio" name="pizzaCrust" value="Hand Tossed">
+                          <span>
+                               The thickest of them all and most original pizza style that satisfies pizza lovers from all backgrounds. You can never go wrong with a fresh pie that's been tossed in the sky!
+                          </span>
+                   </div>
+               </label>
+            </li>
+
+            <li>
+            <label>
+               <p href="#">Thin Crust</p>
+               <div class="dropdown Thin" id="Thin-Crust">
+                       <input type="radio" name="pizzaCrust" value="Thin Crust"> 
+                   <span>
+                       Whether you're watching calories or need the closest thing to a Sicilian slice. The thin crust may be the least dough but it still packs a punch with flavor and crunch!
+                   </span>
+               </div>
+            </label>
+            </li>
+            <li>
+               <label>
+                   <p href="#">New York Style</p>
+                   <div class="dropdown NY" id="NewYorkStyle">
+                           <input type="radio" name="pizzaCrust" value="New York Style" >
+                       <span>
+                           Every "New Yawkers" favorite. This crust gathers inspiration from it's thin crust sibling but in much longer and floppier. Don't need afraid to get your hands dirty with this New York Slice.
+                       </span>
+                   </div>
+               </label>
+            </li>
+            <li>
+                <label>
+                    <p href="#">Gluten Free</p>
+                    <div class="dropdown GF" id="Gluten-Free">
+                        <input type="radio" name="pizzaCrust" value="Gluten Free">
+                       <span>
+                               Allergies aren't the only reason to get
+                               Gluten free. If you are a health fanatic or someone on a dit this may be your new favorite loophole.
+                       </span>
+       
+                    </div>
+                </label>
+            </li>
+        </ul>
+       </nav>
+           
+            <!-- </div> -->
+        
+            <!-- CHEESE -->
+            <span id='cheeses'style="display: none">
+                <label>Throw some cheese on dat!</label>
+                <select class="form-control" required id="cheese">
+                    <option>Light</option>
+                    <option selected>Normal</option>
+                    <option value="extra">Extra +$2.99</option>
+                    <option value="double">Double +$3.99</option>
+                </select>
+            </span>
+            <!--SAUCE -->
+            <span id='sauces' style="display: none">
+                <label>Sauce it up!</label>
+                <select class="form-control" required id="sauce">
+                    <option selected>Regular Tomato</option>
+                    <option value="hearty">Hearty Tomato +$.99</option>
+                    <option value="bbq">BBQ +$1.99</option>
+                </select>
+            </span>
+            <!--ALL  TOPPINS 99cents -->
+           <span id="toppings" style="display: none">
+                <label for="#toppings">..And to 'Top' it all off... (Bad Pun)</label>
+            <div style="width:100%"class="Pepperoni">
+                <input type="checkbox" value="Pepperoni" class="form-check-input">Pepperoni
+            </div>
+             <div class="Sausage">
+                 <input type="checkbox" value="Sausage" class="form-check-input">Sausage
+             </div>
+             <div class="Ham">
+                 <input type="checkbox" value="Ham" class="form-check-input">Ham
+             </div>
+             <div class="Bacon">
+                 <input type="checkbox" value="Bacon" class="form-check-input">Bacon
+             </div>
+             <div class="Salami">
+                 <input type="checkbox" value="Salami" class="form-check-input">Salami
+             </div>
+             <div class="Peppers">
+                 <input type="checkbox" value="Peppers" class="form-check-input">Peppers
+             </div>
+             <div class="Onion">
+                 <input type="checkbox" value="Onion" class="form-check-input">Onion
+             </div>
+             <div class="Olives">
+                 <input type="checkbox" value="Olives" class="form-check-input">Olives 
+             </div>
+             <div class="Jalapenos">
+                 <input type="checkbox" value="Jalapenos" class="form-check-input">Jalapenos 
+             </div> 
+             <div class="Mushrooms">
+                 <input type="checkbox" value="Mushroooms" class="form-check-input">Mushroooms  
+             </div>
+             <div class="Pineapple">
+                 <input type="checkbox" value="Pineapple" class="form-check-input">Pineapple
+             </div>
+          </span>
+        
+            <div class="row" id="Totally" >
+                <div class="col">
+                    <p>Total</p>
+                </div>
+                <div class="col-2">
+                     <span id="Totaldiv">$0.00</span>
+                </div>
+            </div>
+        
+        <div class="row justify-content-center">
+            <input type="submit" value="Fire it Up!" class="btn btn-primary">
+        </div>
+     </form>
+
+    </section>
+    
+
+  <!-- #####################################  -->
+    <section id="Billing" class="d-none">
+        <div class="row justify-content-center">
+            <h2>What's pizza without a little C.R.E.A.M?</h2>
+        </div>
+        <div class="row justify-content-center">
+            <h4>(Payment Details)</h4>
+        </div>
+        <form action="" id="BillYa">
+            <div class="row justify-content-start">
+                    <input class="form-control" type="checkbox" name="CopyFields" id="insertCustInfo" class="form-check-input"> Same As Delivery Info
+            </div>
+            <div class="form-group">
+    
+                <label for="">Name:</label>
+                    <input class="form-control" type="text" name="name" id="BillName">
+            </div>
+            <div class="form-group">
+                <label for="">Billing Address:</label>
+                    <input class="form-control" type="text" name="address" id="BillAddress">
+            </div>
+            <div class="form-group">
+            <label for="">Address 2 (Suite,Apt, Etc.)</label>
+                <input class="form-control" type="text" name="optAddress" id="BillAddressTwo">
+            </div>
+            <div class="form-group">
+            <label for="">Billing Zip Code</label>
+                <input class="form-control" type="number" name="zip" id="BillZip">
+            </div>
+            <div class="form-group">
+            <label for="">Credit Card Number</label>
+                <input class="form-control" type="text" name="Card Number" id="cardNumberInput" maxlength="10">
+                <span>
+                    <img src="/img/visablkwhite2.png" alt="" id="visaLogo" width="44px" height="44px">
+                    <img src="/img/mastercardblkwhite.png" alt="" id="mastercardLogo" width="44px" height="44px">
+                    <img src="/img/amexblkwhite.png" alt="" id="amexLogo" width="44px" height="44px">
+                </span>
+            </div>
+
+            <label for="">CVC</label>
+                <input class="form-control" type="number" name="CVC" id="">
+                
+            <label for="">Expiration Date on Card</label>
+                <input class="form-control" type="date" name="Exp" id="">
+            
+        <div class="row justify-content-center">
+            <input type="submit" value="GIVE ME MY PIZZA!" class="btn btn-primary">
+        </div>
+
+        </form>
+
+</section>
+
+
+    <!-- PART 5 THANK YOU FOR YOUR ORDER! -->
+
+  <!-- #####################################  -->
+<section id="thanks" class="d-none">
+    
+        <div class="row justify-content-center">
+            <h2 id="msgThanks"></h2>
+        </div>
+    
+        <div class="row justify-content-center">
+            <h4>
+                Thank you for your order!
+            </h4>
+
+        </div>
+        <div class="row justify-content-center">
+            <p>Your <span id="readyWhen">pizza</span> will be ready in 10-15 minutes! </p><br>
+        </div>
+
+        <div class="row justify-content-center">
+            <p>For your records, your confirmation number is <span id="confirmationNum"></span>.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <p>If you need anything you can reach the store at <span id="storeNum"></span></p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <p>We appreciate your business,
+                and enjoy your pizza!</p>
+        </div>
+    
+    <button id="closeModal" style="position: absolute; top:0;right:2%; background: transparent; border:none; font-size: 2em; color:black!important;">X</button>
+</section>
+
+</div>
+    <!-- PART  ORDERS PLACED -->
+
+</div>
+    <script src="js/index.js"></script>
+</body>
+</html>
