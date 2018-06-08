@@ -4,8 +4,8 @@
 
 }
 body{
-    background-image: url(/img/pizzabackground.gif);
-    background-repeat: no-repeat;
+    background-image: url(../img/pizzabackground.gif);
+    background-repeat:repeat-y;
     background-size: 100%;
     height:100%!important;
 }

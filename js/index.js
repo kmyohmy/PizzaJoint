@@ -375,6 +375,18 @@ pizzaSize.addEventListener('change', function (e){
         , 2000);
 });
 
+window.document.getElementById('details').addEventListener('keyup', function (e){
+    var regPhone = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+    var regZip = /^\d{5}(?:[-\s]\d{4})?$/;
+    var regEmail =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var thiszip = window.document.getElementById('thisZip').value;
+    var thisEmail = window.document.getElementById('thisEmail').value;
+
+    if(regZip.test(thisZip) && regEmail.test(thisEmail)){
+        window.document.getElementById('btnDetails').removeAttribute('disabled');
+    }
+    
+});
 
 deliveryForm.addEventListener("submit", function (e) {
         e.preventDefault();
