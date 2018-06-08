@@ -515,7 +515,7 @@ $("closeModal").addEventListener('click', function (e){
         
                 console.log("Visa");
                 CardNumInput.maxlength = '16';
-                $('visaLogo').src = "img/visacolor.png";
+                $('visaLogo').src = "./img/visacolor.png";
                 if( CardNumInput.value.length === 13 || CardNumInput.value.length === 16 ) {
                     CheckLuhn(CardNumInput.value);
                     
@@ -524,7 +524,7 @@ $("closeModal").addEventListener('click', function (e){
                 console.log("MAsterCard");
     
                 CardNumInput.maxlength = '16';
-                $('mastercardLogo').src ="img/mastercardcolor.png";
+                $('mastercardLogo').src ="./img/mastercardcolor.png";
                 if(CardNumInput.value.length === 16) {
                     CheckLuhn(CardNumInput.value);
                     //MASTERCARD
@@ -535,7 +535,7 @@ $("closeModal").addEventListener('click', function (e){
             } else if (CardNumInput.value.charAt(0)=== "3" ) {
                 console.log("Amex");
                 CardNumInput.maxlength = '15';
-                $('amexLogo').src= "/img/amexcolor.png";
+                $('amexLogo').src= "./img/amexcolor.png";
                 if(CardNumInput.value.length === 15) {
                     CheckLuhn(CardNumInput.value);
                     //AMERICAN EXPRESS
@@ -543,8 +543,8 @@ $("closeModal").addEventListener('click', function (e){
     
             } else if (e.keyCode === 8 && CardNumInput.value.length === 0){
                     $('visaLogo').src = "./img/visablkwhite2.png";
-                    $('mastercardLogo').src= "./img/visablkwhite2.png";
-                    $('amexLogo').src = "./img/visablkwhite2.png";
+                    $('mastercardLogo').src= "./img/mastercardblkwhite.png";
+                    $('amexLogo').src = "./img/amexblkwhite.png";
                     max.value = 16;
                     CardNumInput.setAttributeNode(max);
     
