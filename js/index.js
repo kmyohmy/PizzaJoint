@@ -297,22 +297,31 @@ $('crust').addEventListener('click', function(e){
         }
     }
 
+    var crustArray = crustSpace.getElementsByTagName('label');
+    Array.prototype.map.call( crustArray, (crust) => {
+        
+            crust.style.display = "none";
+        
+        
+    })
+    
 });
 
 
 $('cheese').addEventListener('change', function(e){
     that = $('cheese').value;
     if(that === "extra"){
-        total+=2.99
+        total+= 2.99;
         
     } else if(that === "double"){
-        total+=3.99
+        total+=3.99;
         
     }
     window.console.log(that);
     
     window.console.log(total);
     Totaldiv.innerHTML = total.toFixed(2);
+    $('cheese').disabled = true;
 });
 
 $('sauce').addEventListener('change', function(e){
@@ -328,6 +337,7 @@ $('sauce').addEventListener('change', function(e){
 
     window.console.log(total);
     Totaldiv.innerHTML = total.toFixed(2);
+    $('sauce').disabled = true;
 });
 
 //##############################################################################################################
@@ -375,15 +385,12 @@ pizzaSize.addEventListener('change', function (e){
         , 2000);
 });
 
-window.document.getElementById('details').addEventListener('keyup', function (e){
-    var regPhone = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
-    var regZip = /^\d{5}(?:[-\s]\d{4})?$/;
-    var regEmail =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var thiszip = window.document.getElementById('thisZip').value;
-    var thisEmail = window.document.getElementById('thisEmail').value;
-
-    if(regZip.test(thisZip) && regEmail.test(thisEmail)){
-        window.document.getElementById('btnDetails').removeAttribute('disabled');
+window.document.getElementById('details').addEventListener('change', function (e){
+    console.log('change');
+    var zipvalidated = false, emailValidated = false,phoneValidated = false;
+    
+    if(zipvalidated && emailValidated && phoneValidated){
+        window.document.getElementById('btnDetails').style.display = 'block';
     }
     
 });
@@ -441,119 +448,120 @@ $("closeModal").addEventListener('click', function (e){
 //##############################################################################################################
                                 // CREDIT CARD VALIDATION & CARD FORM DETAILS
 
-function CheckLuhn (CardNumber) { 
+    function CheckLuhn (CardNumber) { 
 
-    var number =  CardNumber.split("").reverse().join("");
-    var i;
-    var fullNumber = 0;
-
-    for(i = 0; i < number.length; i++) {
-        var luhnNum;    
-        if(i % 2){
-            luhnNum = number[i] * 2;
-
-            if(luhnNum > 9){
-                luhnNum = String(luhnNum);
-                intOne = parseInt(luhnNum.charAt(0), 10);
-                intTwo = parseInt(luhnNum.charAt(1), 10);
-                luhnNum =  intOne + intTwo;
-                window.console.log(luhnNum);
-                fullNumber += luhnNum;
-            } else {
-                fullNumber += luhnNum;
-                window.console.log(luhnNum);
-            
-            }
-        } else {
-            luhnNum = number[i];
-            fullNumber += parseInt(luhnNum,10);
-            }
-    }
-
-    window.console.log(" The Sum is " + fullNumber); 
-
-    //Check and see if it's actually divisible
-    if (fullNumber % 10 === 0){
-        
-        //Replace is-invalid class if it is there NEEDS TO BE ADJUSTED
-
-   $('cardNumberInput').classList.remove('is-invalid');
-        //Make Input box green
-    $('cardNumberInput').classList.add('is-valid');;
-
-    window.console.log("This card is valid");
-    } else {
-        //Make input red
-    //Put in a span
-    $('cardNumberInput').classList.add('is-invalid');
-        window.console.log("This card is not valid");
-
-    }
-
-}
-
-var CardNumber = window.document.getElementById("cardNumberInput").value; /*IRRELEVANT*/
-
-var CardNumInput = window.document.getElementById("cardNumberInput");
-
-CardNumInput.addEventListener('keyup', function (e) {
-    // console.log(e.key + " Value " + CardNumInput.value);
-    // console.log(" Value Length " + CardNumInput.value.length);
-    var max = document.createAttribute('maxlength');
-    // var VisaCardRegex = /[4]/g, MastercardRegEx;
+        var number =  CardNumber.split("").reverse().join("");
+        var i;
+        var fullNumber = 0;
     
-    //CHECK FOR THE CARD NUMBER
+        for(i = 0; i < number.length; i++) {
+            var luhnNum;    
+            if(i % 2){
+                luhnNum = number[i] * 2;
     
-    if( CardNumInput.value.charAt(0) === "4") {
- 
-            console.log("Visa");
-            CardNumInput.maxlength = '16';
-            $('visaLogo').src = "img/visacolor.png";
-            if( CardNumInput.value.length === 13 || CardNumInput.value.length === 16 ) {
-                CheckLuhn(CardNumInput.value);
+                if(luhnNum > 9){
+                    luhnNum = String(luhnNum);
+                    intOne = parseInt(luhnNum.charAt(0), 10);
+                    intTwo = parseInt(luhnNum.charAt(1), 10);
+                    luhnNum =  intOne + intTwo;
+                    window.console.log(luhnNum);
+                    fullNumber += luhnNum;
+                } else {
+                    fullNumber += luhnNum;
+                    window.console.log(luhnNum);
                 
-            }
-        } else if (CardNumInput.value.charAt(0) === "5" ){
-            console.log("MAsterCard");
-
-            CardNumInput.maxlength = '16';
-            $('mastercardLogo').src ="img/mastercardcolor.png";
-            if(CardNumInput.value.length === 16) {
-                CheckLuhn(CardNumInput.value);
-                //MASTERCARD
-            
-            }
-
-            
-        } else if (CardNumInput.value.charAt(0)=== "3" ) {
-            console.log("Amex");
-            CardNumInput.maxlength = '15';
-            $('amexLogo').src= "/img/amexcolor.png";
-            if(CardNumInput.value.length === 15) {
-                CheckLuhn(CardNumInput.value);
-                //AMERICAN EXPRESS
-            }
-
-        } else if (e.keyCode === 8 && CardNumInput.value.length === 0){
-                $('visaLogo').src = "/img/visablkwhite2.png";
-                $('mastercardLogo').src= "/img/mastercardblkwhite.png";
-                $('amexLogo').src = "/img/amexblkwhite.png";
-                max.value = 16;
-                CardNumInput.setAttributeNode(max);
-
+                }
+            } else {
+                luhnNum = number[i];
+                fullNumber += parseInt(luhnNum,10);
+                }
         }
+    
+        window.console.log(" The Sum is " + fullNumber); 
+    
+        //Check and see if it's actually divisible
+        if (fullNumber % 10 === 0){
+            
+            //Replace is-invalid class if it is there NEEDS TO BE ADJUSTED
+    
+        $('cardNumberInput').classList.remove('is-invalid');
+            //Make Input box green
+        $('cardNumberInput').classList.add('is-valid');;
+    
+        window.console.log("This card is valid");
+        } else {
+            //Make input red
+        //Put in a span
+        $('cardNumberInput').classList.add('is-invalid');
+            window.console.log("This card is not valid");
+    
+        }
+    
+    }
+    
+    var CardNumber = window.document.getElementById("cardNumberInput").value; /*IRRELEVANT*/
+    
+    var CardNumInput = window.document.getElementById("cardNumberInput");
+    
+    CardNumInput.addEventListener('keyup', function (e) {
+        // console.log(e.key + " Value " + CardNumInput.value);
+        // console.log(" Value Length " + CardNumInput.value.length);
+        var max = document.createAttribute('maxlength');
+        // var VisaCardRegex = /[4]/g, MastercardRegEx;
         
-});
-
-$("insertCustInfo").addEventListener('click', function () {
-    window.console.log(currentCustInfo.name)
-    $('BillName').value = currentCustInfo.name;
-    $('BillAddress').value = currentCustInfo.address;
-    $('BillAddressTwo').value = currentCustInfo.addressTwo;
-    $('BillZip').value = currentCustInfo.zip;
-
-});
-
+        //CHECK FOR THE CARD NUMBER
+        
+        if( CardNumInput.value.charAt(0) === "4") {
+        
+                console.log("Visa");
+                CardNumInput.maxlength = '16';
+                $('visaLogo').src = "img/visacolor.png";
+                if( CardNumInput.value.length === 13 || CardNumInput.value.length === 16 ) {
+                    CheckLuhn(CardNumInput.value);
+                    
+                }
+            } else if (CardNumInput.value.charAt(0) === "5" ){
+                console.log("MAsterCard");
+    
+                CardNumInput.maxlength = '16';
+                $('mastercardLogo').src ="img/mastercardcolor.png";
+                if(CardNumInput.value.length === 16) {
+                    CheckLuhn(CardNumInput.value);
+                    //MASTERCARD
+                
+                }
+    
+                
+            } else if (CardNumInput.value.charAt(0)=== "3" ) {
+                console.log("Amex");
+                CardNumInput.maxlength = '15';
+                $('amexLogo').src= "/img/amexcolor.png";
+                if(CardNumInput.value.length === 15) {
+                    CheckLuhn(CardNumInput.value);
+                    //AMERICAN EXPRESS
+                }
+    
+            } else if (e.keyCode === 8 && CardNumInput.value.length === 0){
+                    $('visaLogo').src = "./img/visablkwhite2.png";
+                    $('mastercardLogo').src= "./img/visablkwhite2.png";
+                    $('amexLogo').src = "./img/visablkwhite2.png";
+                    max.value = 16;
+                    CardNumInput.setAttributeNode(max);
+    
+            }
+            
+    });
+    
+    $("insertCustInfo").addEventListener('click', function () {
+        window.console.log(currentCustInfo.name)
+        $('BillName').value = currentCustInfo.name;
+        $('BillAddress').value = currentCustInfo.address;
+        $('BillAddressTwo').value = currentCustInfo.addressTwo;
+        $('BillZip').value = currentCustInfo.zip;
+    
+    });
+    
+                                
 
 //##############################################################################################################
 //##############################################################################################################
@@ -681,7 +689,6 @@ function ifChecked(e) {
 
 if (false ===e.target){
 
-
     for (i=0; i < crusts.length; i++){
         var tagname = crusts[i].parentElement.id;
         window.console.log(crusts[i]);
@@ -791,4 +798,26 @@ window.addEventListener('load', function (){
 
 
 
+});
+window.document.getElementById('zipCode').addEventListener('keypress',function(e){
+    var that = /^\d{5}$/;
+    if (that.test(e.target.value)){
+        this.classList.remove('is-invalid');
+        zipvalidated = true;
+    }
+});
+window.document.getElementById('thisEmail').addEventListener('keypress',function(e){
+   var that = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (that.test(e.target.value)){
+        this.classList.remove('is-invalid');
+        emailValidated =  true;
+    }
+});
+
+window.document.getElementById('PhoneNumber').addEventListener('keyup', function(e){
+    var that = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+    if (that.test(e.target.value) ){
+        this.classList.remove('is-invalid');
+        phoneValidated =true;
+    }
 });
